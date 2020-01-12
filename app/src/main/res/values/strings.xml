@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Jiayou</string>
+
+    <string name="stage_01">STAGE 1</string>
+    <string name="stage_02">STAGE 2</string>
+    <string name="stage_03">STAGE 3</string>
+    <string name="stage_04">STAGE 4</string>
+    <string name="stage_05">STAGE 5</string>
+    <string name="stage_06">STAGE 6</string>
+    <string name="stage_07">STAGE 7</string>
+    <string name="stage_08">STAGE 8</string>
+    <string name="stage_09">STAGE 9</string>
+    <string name="stage_10">STAGE 10</string>
+    <string name="stage_11">STAGE 11</string>
+    <string name="stage_12">STAGE 12</string>
+
+    <string name="video">영상</string>
+    <string name="part_1">PART 1</string>
+    <string name="part_2">PART 2</string>
+    <string name="exam">종합퀴즈</string>
+    <string name="matching">단어퀴즈</string>
+    <string name="blank">빈칸퀴즈</string>
+    <string name="arrange">배열퀴즈</string>
+    <string name="tts">TTS</string>
+    <string name="write">WRITE</string>
+</resources>
