@@ -1,13 +1,13 @@
 package com.lws.android.jiayou;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PartActivity extends AppCompatActivity {
     String stage, part;
@@ -50,7 +50,7 @@ public class PartActivity extends AppCompatActivity {
     }
 
     public void onMatchingButtonClick(View view) {
-        startQuizActivity(MatchingActivity.class);
+        startQuizActivity(MakeQuiz.class);
     }
 
     public void onBlankButtonClick(View view) {

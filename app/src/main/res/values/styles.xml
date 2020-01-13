@@ -2,10 +2,17 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
         <!-- Customize your theme here. -->
+
+        <!-- 노타이틀바 -->
+        <item name="windowNoTitle">true</item>
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@drawable/sky_image</item>
     </style>
 
     <style name="Theme.Transparent" parent="Theme.AppCompat">
