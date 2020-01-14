@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //테스트 커밋
+
     public void onStageButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_stage_01:

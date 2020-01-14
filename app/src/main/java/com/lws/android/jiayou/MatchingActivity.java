@@ -71,7 +71,6 @@ public class MatchingActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         }
-
         initialize();
 
 
