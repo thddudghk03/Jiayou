@@ -1,47 +1,30 @@
 package com.lws.android.jiayou;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Stack;
 
-public class MatchingActivity extends AppCompatActivity implements View.OnClickListener{
-    Stack<WordQuiz> wordQuizzes = new Stack<>();
+public class MatchingActivity extends BaseActivity implements View.OnClickListener {
+    Stack<WordQuiz> wordQuizzes;
     TextView lifeTextView, questionTextView, pronunciationTextView, remainingTextView;
-    Button button1, button2, button3, button4;
+    Button choiceButton1, choiceButton2, choiceButton3, choiceButton4;
 
     String stage, part;
 
-    int life = 5;
-    String question;
+    int life;
     String answer;
-    String pronunciation;
 
     String choice1;
     String choice2;
     String choice3;
     String choice4;
 
-    State state;
-
-    enum State {
-        Solving, Finished
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    protected void init() {
         setContentView(R.layout.activity_matching);
 
         Intent intent = getIntent();
@@ -53,132 +36,86 @@ public class MatchingActivity extends AppCompatActivity implements View.OnClickL
         pronunciationTextView = findViewById(R.id.text_pronunciation);
         remainingTextView = findViewById(R.id.text_remaining);
 
-        button1 = findViewById(R.id.button_choice_1);
-        button2 = findViewById(R.id.button_choice_2);
-        button3 = findViewById(R.id.button_choice_3);
-        button4 = findViewById(R.id.button_choice_4);
+        choiceButton1 = findViewById(R.id.button_choice_1);
+        choiceButton2 = findViewById(R.id.button_choice_2);
+        choiceButton3 = findViewById(R.id.button_choice_3);
+        choiceButton4 = findViewById(R.id.button_choice_4);
 
-        button1.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
+        wordQuizzes = new WordQuizGenerator(DataLoader.loadWords(stage, part)).generate();
 
-        Serializable serializable = getIntent().getSerializableExtra("wordQuizzes");
-        if (serializable instanceof HashSet<?>) {
-            for (Object obj : (HashSet<?>) serializable) {
-                if (obj instanceof WordQuiz) {
-                    wordQuizzes.push((WordQuiz) obj);
-                }
-            }
-        }
-        initialize();
+        choiceButton1.setOnClickListener(this);
+        choiceButton2.setOnClickListener(this);
+        choiceButton3.setOnClickListener(this);
+        choiceButton4.setOnClickListener(this);
 
+        life = 3;
 
-    }
-
-    private void initialize() {
-        life = 5;
-        state = State.Solving;
         setFields();
-        display();
     }
 
     private void setFields() {
-        if (state == State.Solving) {
-            WordQuiz wordQuiz = wordQuizzes.pop();
-
-            question = wordQuiz.getQuestion();
-            answer = wordQuiz.getAnswer();
-            pronunciation = wordQuiz.getPronunciation();
-
-            choice1 = wordQuiz.getChoices().get(0);
-            choice2 = wordQuiz.getChoices().get(1);
-            choice3 = wordQuiz.getChoices().get(2);
-            choice4 = wordQuiz.getChoices().get(3);
+        if (wordQuizzes.empty()) {
+            complete();
+            return;
         }
-    }
+        WordQuiz wordQuiz = wordQuizzes.pop();
 
-    private void display() {
-        if (state == State.Solving) {
-            String s = "♥ × " + life;
-            lifeTextView.setText(s);
-            questionTextView.setText(question);
-            pronunciationTextView.setText(pronunciation);
-            s = "남은 퀴즈 : " + wordQuizzes.size();
-            remainingTextView.setText(s);
+        questionTextView.setText(wordQuiz.getQuestion());
+        answer = wordQuiz.getAnswer();
+        pronunciationTextView.setText(wordQuiz.getPronunciation());
 
-            button1.setText(choice1);
-            button2.setText(choice2);
-            button3.setText(choice3);
-            button4.setText(choice4);
-        }
+        choice1 = wordQuiz.getChoices().get(0);
+        choice2 = wordQuiz.getChoices().get(1);
+        choice3 = wordQuiz.getChoices().get(2);
+        choice4 = wordQuiz.getChoices().get(3);
+        choiceButton1.setText(choice1);
+        choiceButton2.setText(choice2);
+        choiceButton3.setText(choice3);
+        choiceButton4.setText(choice4);
+
+        lifeTextView.setText(getString(R.string.life, life));
+        remainingTextView.setText(getString(R.string.remaining, wordQuizzes.size()));
+
     }
 
     public void onClick(View v) {
-        if (state == State.Solving) {
-            String choice;
-            switch (v.getId()) {
-                case R.id.button_choice_1:
-                    choice = choice1;
-                    break;
-                case R.id.button_choice_2:
-                    choice = choice2;
-                    break;
-                case R.id.button_choice_3:
-                    choice = choice3;
-                    break;
-                case R.id.button_choice_4:
-                    choice = choice4;
-                    break;
-                default:
-                    return;
-            }
-            Intent intent = new Intent(this, QuizResultActivity.class);
-            if (!choice.equals(answer)) {
-                life--;
-                intent.putExtra("result", "오답...");
-            } else {
-                intent.putExtra("result","정답!");
-            }
-            startActivity(intent);
-            if (life > 0 && wordQuizzes.size() > 0) {
-                setFields();
-                display();
-            } else {
-                display();
-                state = State.Finished;
-                new Thread(new Runnable() {
-                    @Override
-
-                    public void run() {
-                        SystemClock.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent;
-
-                                //라이프에 따른 다음 꺼 풀어주기
-
-                                if (life == 0){
-                                    intent = new Intent(getApplicationContext(), PartActivity.class);
-                                    intent.putExtra(Constants.EXTRA_STAGE, stage);
-                                    intent.putExtra(Constants.EXTRA_PART, part);
-                                    startActivity(intent);
-
-                                }else {
-                                    intent = new Intent(getApplicationContext(),PartActivity.class);
-                                    intent.putExtra(Constants.EXTRA_STAGE, stage);
-                                    intent.putExtra(Constants.EXTRA_PART, part);
-                                    startActivity(intent);
-                                }
-
-
-                                finish();
-                            }
-                        });
-                    }
-                }).start();
-            }
+        switch (v.getId()) {
+            case R.id.button_choice_1:
+                check(choice1);
+                break;
+            case R.id.button_choice_2:
+                check(choice2);
+                break;
+            case R.id.button_choice_3:
+                check(choice3);
+                break;
+            case R.id.button_choice_4:
+                check(choice4);
+                break;
         }
+    }
+
+    private void check(String choice) {
+        if (!choice.equals(answer) && life > 0) {
+            life--;
+            Toast.makeText(this, "오답...", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "정답!", Toast.LENGTH_SHORT).show();
+        }
+        if (life <= 0) {
+            over();
+        } else {
+            setFields();
+        }
+    }
+
+    private void over() {
+        Toast.makeText(this, "실패...", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    private void complete() {
+        Toast.makeText(this, "통과!", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

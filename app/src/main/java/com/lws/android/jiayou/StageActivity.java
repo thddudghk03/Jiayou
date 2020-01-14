@@ -9,22 +9,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class StageActivity extends AppCompatActivity {
+public class StageActivity extends BaseActivity {
     private String stage;
     TextView stageTextView;
     Button part1Button, part2Button, examButton;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    protected void init() {
         setContentView(R.layout.activity_stage);
 
-        init();
-    }
-
-    private void init() {
         stage = getIntent().getStringExtra(Constants.EXTRA_STAGE);
 
         stageTextView = findViewById(R.id.tv_stage);

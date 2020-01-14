@@ -8,6 +8,7 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -134,14 +135,12 @@ public class BlankActivity extends AppCompatActivity implements View.OnClickList
                 default:
                     return;
             }
-            Intent intent = new Intent(this, QuizResultActivity.class);
             if (!choice.equals(answer)) {
                 life--;
-                intent.putExtra("result", "오답...");
+                Toast.makeText(this, "오답...", Toast.LENGTH_SHORT).show();
             } else {
-                intent.putExtra("result","정답!");
+                Toast.makeText(this, "정답!", Toast.LENGTH_SHORT).show();
             }
-            startActivity(intent);
             if (life > 0 && blankQuizzes.size() > 0) {
                 setFields();
                 display();

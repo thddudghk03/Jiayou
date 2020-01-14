@@ -1,14 +1,9 @@
 package com.lws.android.jiayou;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-public class ExamActivity extends AppCompatActivity {
+public class ExamActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init() {
         setContentView(R.layout.activity_exam);
     }
 }

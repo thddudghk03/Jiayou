@@ -23,4 +23,6 @@
     <string name="arrange">배열퀴즈</string>
     <string name="tts">TTS</string>
     <string name="write">WRITE</string>
+    <string name="life">♥ × %d</string>
+    <string name="remaining">남은 퀴즈 : %d</string>
 </resources>

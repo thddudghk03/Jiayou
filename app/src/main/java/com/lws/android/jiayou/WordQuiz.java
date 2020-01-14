@@ -1,10 +1,9 @@
 package com.lws.android.jiayou;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class WordQuiz implements Serializable {
+public class WordQuiz {
     private String question;
     private String answer;
     private String pronunciation;
