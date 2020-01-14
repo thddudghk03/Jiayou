@@ -54,7 +54,7 @@ public class PartActivity extends AppCompatActivity {
     }
 
     public void onBlankButtonClick(View view) {
-        startQuizActivity(BlankActivity.class);
+        startQuizActivity(MakeBlankQuiz.class);
     }
 
     public void onArrangeButtonClick(View view) {

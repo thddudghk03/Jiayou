@@ -21,6 +21,7 @@
         <activity android:name=".PartActivity" />
         <activity android:name=".StageActivity" />
         <activity android:name=".MakeQuiz"/>
+        <activity android:name=".MakeBlankQuiz"/>"
         <activity android:name=".QuizResultActivity"
             android:theme="@style/Theme.Transparent"/>
         <activity android:name=".MainActivity">

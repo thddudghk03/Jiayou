@@ -12,16 +12,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 
-public class MakeQuiz extends AppCompatActivity {
+public class MakeBlankQuiz extends AppCompatActivity {
 
-    HashSet<WordQuiz> wordQuizzes;
+    HashSet<BlankQuiz> blanksQuizzes;
     String stage, part;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_makequiz);
+        setContentView(R.layout.activity_makeblankquiz);
 
         Intent intent = getIntent();
         stage = intent.getStringExtra(Constants.EXTRA_STAGE);
@@ -30,14 +31,14 @@ public class MakeQuiz extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HashSet<Word> words = new HashSet<>(DataLoader.loadWords(stage,part));
-                wordQuizzes = generateWordQuizzes(words);
+                HashSet<Blank> blanks = new HashSet<>(DataLoader.loadBlanks(stage,part));
+                blanksQuizzes= generateBlankQuizzes(blanks);
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(MakeQuiz.this, MatchingActivity.class);
-                        intent.putExtra("wordQuizzes", wordQuizzes);
+                        Intent intent = new Intent(MakeBlankQuiz.this, BlankActivity.class);
+                        intent.putExtra("blanksQuizzes", blanksQuizzes);
                         intent.putExtra(Constants.EXTRA_STAGE, stage);
                         intent.putExtra(Constants.EXTRA_PART, part);
                         startActivity(intent);
@@ -47,42 +48,34 @@ public class MakeQuiz extends AppCompatActivity {
             }
         }).start();
 
-
     }
 
-    private HashSet<WordQuiz> generateWordQuizzes(HashSet<Word> words) {
-        HashSet<WordQuiz> wordQuizzes = new HashSet<>();
-        ArrayList<Word> a = new ArrayList<>(words);
+    private HashSet<BlankQuiz> generateBlankQuizzes(HashSet<Blank> blanks) {
+        HashSet<BlankQuiz> wordQuizzes = new HashSet<>();
+        ArrayList<Blank> a = new ArrayList<>(blanks);
         Random random = new Random();
-        Word question;
-        HashMap<String, Word> m = new HashMap<>();
+        Blank question;
+        HashMap<String, Blank> m = new HashMap<>();
 
-        while (wordQuizzes.size() < 10) {
+        while (wordQuizzes.size() < 8) {
             question = a.get(random.nextInt(a.size()));
             m.clear();
             m.put(question.getMeaning(), question);
             while (m.size() < 4) {
-                Word w = a.get(random.nextInt(a.size()));
-                m.put(w.getMeaning(), w);
+                Blank b = a.get(random.nextInt(a.size()));
+                m.put(b.getMeaning(), b);
             }
             m.put(question.getMeaning(), question);
-            ArrayList<Word> choicesWord = new ArrayList<>(m.values());
+            ArrayList<Blank> choicesWord = new ArrayList<>(m.values());
             Collections.shuffle(choicesWord);
-            if (random.nextBoolean()) {
-                ArrayList<String> choices = new ArrayList<>();
-                for (Word word : choicesWord) {
-                    choices.add(word.getMeaning());
-                }
-                wordQuizzes.add(new WordQuiz(question.getCharacter(), question.getMeaning(), question.getPronunciation(), choices));
-            } else {
-                ArrayList<String> choices = new ArrayList<>();
-                for (Word word : choicesWord) {
-                    choices.add(word.getCharacter());
-                }
-                wordQuizzes.add(new WordQuiz(question.getMeaning(), question.getCharacter(), "", choices));
+
+            ArrayList<String> choices = new ArrayList<>();
+            for (Blank blank : choicesWord) {
+                choices.add(blank.getBlank_Answer());
             }
+            wordQuizzes.add(new BlankQuiz(question.getCharacter(), question.getMeaning(), question.getPronunciation(), question.getBlank_Answer(),choices));
+
         }
         return wordQuizzes;
     }
-
 }

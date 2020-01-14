@@ -157,10 +157,23 @@ public class MatchingActivity extends AppCompatActivity implements View.OnClickL
                             @Override
                             public void run() {
                                 Intent intent;
-                                int scoreNum = 100-(10*(5-life));
-                                intent = new Intent(getApplicationContext(), MainActivity.class);
-//                                Intent intent = new Intent(getApplicationContext(), QuizStartActivity.class);
-                                startActivity(intent);
+
+                                //라이프에 따른 다음 꺼 풀어주기
+
+                                if (life == 0){
+                                    intent = new Intent(getApplicationContext(), PartActivity.class);
+                                    intent.putExtra(Constants.EXTRA_STAGE, stage);
+                                    intent.putExtra(Constants.EXTRA_PART, part);
+                                    startActivity(intent);
+
+                                }else {
+                                    intent = new Intent(getApplicationContext(),PartActivity.class);
+                                    intent.putExtra(Constants.EXTRA_STAGE, stage);
+                                    intent.putExtra(Constants.EXTRA_PART, part);
+                                    startActivity(intent);
+                                }
+
+
                                 finish();
                             }
                         });
