@@ -3,6 +3,11 @@ package com.lws.android.jiayou;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 public class WriteActivity extends AppCompatActivity {
 
@@ -10,5 +15,19 @@ public class WriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
+
+
+
+        int image = getIntent().getIntExtra(Constants.EXTRA_WORD,0);
+
+        LinearLayout drawLayout = (LinearLayout) findViewById(R.id.draw_layout);
+        final MyView m = new MyView(this);
+        drawLayout.addView(m);
+
+       ImageView wordgif = (ImageView) findViewById(R.id.word_gif);
+
+        GlideDrawableImageViewTarget gifImage = new GlideDrawableImageViewTarget(wordgif);
+        Glide.with(this).load(image).into(gifImage);
+
     }
 }

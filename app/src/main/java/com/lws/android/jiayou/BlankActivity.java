@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Stack;
 
-public class BlankActivity extends AppCompatActivity implements View.OnClickListener{
+public class BlankActivity extends BaseActivity implements View.OnClickListener{
 
     Stack<BlankQuiz> blankQuizzes = new Stack<>();
     TextView lifeTextView, questionTextView, pronunciationTextView, remainingTextView,meaningTextView;
@@ -38,9 +38,7 @@ public class BlankActivity extends AppCompatActivity implements View.OnClickList
         Solving, Finished
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init(){
         setContentView(R.layout.activity_blank);
 
         Intent intent = getIntent();
@@ -75,8 +73,8 @@ public class BlankActivity extends AppCompatActivity implements View.OnClickList
 
         initialize();
 
-
     }
+
     private void initialize() {
         life = 5;
         state = State.Solving;

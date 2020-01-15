@@ -115,7 +115,7 @@ public class DataLoader {
             case Constants.STAGE_1:
                 switch (part) {
                     case Constants.PART_1:
-                        words.add(new Word("您", "nín", "당신", 1));
+                        words.add(new Word("您", "nín", "당신", R.raw.nin));
                         words.add(new Word("喝", "hē", "마시다", 2));
                         words.add(new Word("什么", "shénme", "무엇", 3));
                         words.add(new Word("饮料", "yǐnliào", "음료", 4));
