@@ -500,29 +500,42 @@ public class DataLoader {
                         blanks.add(new Blank("(__) 餐盘 可以 拿走 吗?","Bǎ cānpán kěyǐ názǒu ma?","가져가도 되겠습니까?","把"));
                         blanks.add(new Blank("把 餐盘 可以 (__) 吗?","Bǎ cānpán kěyǐ názǒu ma?","가져가도 되겠습니까?","拿走"));
                         blanks.add(new Blank("把 (__) 可以 拿走 吗?","Bǎ cānpán kěyǐ názǒu ma?","가져가도 되겠습니까?","把"));
-                        blanks.add(new Blank("(__)","","",""));
-                        blanks.add(new Blank("(__)","","",""));
-                        blanks.add(new Blank("(__)","","",""));
                         break;
                 }
                 break;
             case Constants.STAGE_6:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("你 (__) 过 特殊餐 吗?","Nǐ yùdìng guò tèshūcān ma?","스페셜 밀을 주문하신 적이 있습니까?","预订"));
+                        blanks.add(new Blank("你 预订 (__) 特殊餐 吗?","Nǐ yùdìng guò tèshūcān ma?","스페셜 밀을 주문하신 적이 있습니까?","过"));
+                        blanks.add(new Blank("你 预订 过 (__)  吗?","Nǐ yùdìng guò tèshūcān ma?","스페셜 밀을 주문하신 적이 있습니까?","特殊餐"));
+                        blanks.add(new Blank("这 是 您 预订 的 (__)。","Zhè shì nín yùdìng de yīng'ér cān.","당신이 주문하신 베이비밀입니다.","婴儿餐"));
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("这 是 您 (__) 的 儿童餐。","Zhè shì nín yùdìng de értóngcān.","이것은 당신이 주문한 아동식입니다.","预订"));
+                        blanks.add(new Blank("(__) 预订 的 儿童餐。","Zhè shì nín yùdìng de értóngcān.","이것은 당신이 주문한 아동식입니다.","儿童餐"));
+                        blanks.add(new Blank("还 (__) 什么 吗？","Hái xūyào shénme ma?","더 필요 한 것이 있습니까?","需要"));
+                        blanks.add(new Blank("(__) 需要 什么 吗？","Hái xūyào shénme ma?","더 필요 한 것이 있습니까?","还"));
                         break;
                 }
                 break;
             case Constants.STAGE_7:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("我 (__) 冷。","Wǒ yǒudiǎnr lěng.","저는 조금 춥습니다.","有点儿"));
+                        blanks.add(new Blank("请 给 我 (__)。","Qǐng gěi wǒ máotǎn.","담요를 주세요.","毛毯"));
+                        blanks.add(new Blank("我 有点儿 (__)。","Wǒ yǒudiǎnr tóuténg .","저는 머리가 조금 아픕니다.","头疼"));
+                        blanks.add(new Blank("请 给 (__) 我 眼罩 。","Qǐng gěi wǒ yǎnzhào.","안대를 주세요.","眼罩"));
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("耳机 好像 (__)。","ěrjī hǎoxiàng huàile","이어폰이 고장난 것 같습니다.","坏了"));
+                        blanks.add(new Blank("耳机 (__) 坏了。","ěrjī hǎoxiàng huàile","이어폰이 고장난 것 같습니다.","好像"));
+                        blanks.add(new Blank("我 马上 给 您 subunitng 주장이강산평ㄴ이네 新的.","Wǒ mǎshàng gěi nín huàn xīnde.","제가 곧 새것을 바꾸어 드리겠습니다Wǒ mǎshàng gěi nín huàn xīnde..","换"));
+                        blanks.add(new Blank("(__)","Wǒ mǎshàng gěi nín huàn xīnde.","제가 곧 새것을 바꾸어 드리겠습니다."," | 14:ㄷ08&,"马上));
                         break;
                 }
                 break;
-            case Constants.STAGE_8:
+            case Constants.STAGE_8:ㄹ
                 switch (part) {
                     case Constants.PART_1:
                         break;
