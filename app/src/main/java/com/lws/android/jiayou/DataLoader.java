@@ -530,48 +530,88 @@ public class DataLoader {
                     case Constants.PART_2:
                         blanks.add(new Blank("耳机 好像 (__)。","ěrjī hǎoxiàng huàile","이어폰이 고장난 것 같습니다.","坏了"));
                         blanks.add(new Blank("耳机 (__) 坏了。","ěrjī hǎoxiàng huàile","이어폰이 고장난 것 같습니다.","好像"));
-                        blanks.add(new Blank("我 马上 给 您 subunitng 주장이강산평ㄴ이네 新的.","Wǒ mǎshàng gěi nín huàn xīnde.","제가 곧 새것을 바꾸어 드리겠습니다Wǒ mǎshàng gěi nín huàn xīnde..","换"));
-                        blanks.add(new Blank("(__)","Wǒ mǎshàng gěi nín huàn xīnde.","제가 곧 새것을 바꾸어 드리겠습니다."," | 14:ㄷ08&,"马上));
+                        blanks.add(new Blank("我 马上 给 您 (__) 新的.","Wǒ mǎshàng gěi nín huàn xīnde.","제가 곧 새것을 바꾸어 드리겠습니다","换"));
+                        blanks.add(new Blank("我 (__) 给 您 换 新的.","Wǒ mǎshàng gěi nín huàn xīnde.","제가 곧 새것을 바꾸어 드리겠습니다.","马上"));
                         break;
                 }
                 break;
-            case Constants.STAGE_8:ㄹ
+            case Constants.STAGE_8:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("这 是 (__)。","zhè shì rùjìngkǎ。","이것은 입국신고서입니다.","入境卡"));
+                        blanks.add(new Blank("每个人 都 要 (__) 1 张 入境卡。","měigerén dōu yào tián xiě yì zhāng rù jìng kǎ 。","모든 사람이 1장의 입국신고서를 작성하셔야 합니다.","填写"));
+                        blanks.add(new Blank("每个人 都 (__) 填写 1 张 入境卡。","měigerén dōu yào tián xiě yì zhāng rù jìng kǎ 。","모든 사람이 1장의 입국신고서를 작성하셔야 합니다.","要"));
+                        blanks.add(new Blank("(__) 都 要 填写 1 张 入境卡。","měigerén dōu yào tián xiě yì zhāng rù jìng kǎ 。","모든 사람이 1장의 입국신고서를 작성하셔야 합니다.","每个人"));   
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("这 是 (__)。","Zhè shì hǎiguānshēnbàodān 。","이것은 세관신고서입니다.","海关申报单"));
+                        blanks.add(new Blank("一家人(__)一张就行。","Yì jiā rén tiánxiě yì zhāng jiùxíng.","가족당 1장을 작성하시면 됩니다.","填写"));
+                        blanks.add(new Blank("(__)填写一张就行。","Yì jiā rén tiánxiě yì zhāng jiùxíng.","가족당 1장을 작성하시면 됩니다.","一家人"));
+                        blanks.add(new Blank("一家人填写一张(__)。","Yì jiā rén tiánxiě yì zhāng jiùxíng.","가족당 1장을 작성하시면 됩니다.","就行"));
                         break;
                 }
                 break;
             case Constants.STAGE_9:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("我 想 买 (__)。","Wǒ xiǎng mǎi kǒuhóng.","저는 립스틱을 사고 싶습니다.","口红"));
+                        blanks.add(new Blank("您 要买 哪种 (__) 的 口红?","Nín yàomǎi nǎzhǒng yánsè de kǒuhóng?","어떤 색상의 립스틱을 구매하시겠습니까?","颜色"));
+                        blanks.add(new Blank("我 (__) 口红。","Wǒ xiǎng mǎi kǒuhóng.","저는 립스틱을 사고 싶습니다.","想买"));
+                        blanks.add(new Blank("您 要买 (__) 颜色 的 口红?","Nín yàomǎi nǎzhǒng yánsè de kǒuhóng?","어떤 색상의 립스틱을 구매하시겠습니까?","哪种"));
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("我 想 (__) 给您 这 瓶 香水。","Wǒ xiǎng jièshào gěinín zhè ping xiāngshuǐ.","저는 이 향수를 추천하고 싶습니다.","介绍"));
+                        blanks.add(new Blank("我 想 介绍 给您 这 (__) 香水。","Wǒ xiǎng jièshào gěinín zhè ping xiāngshuǐ.","저는 이 향수를 추천하고 싶습니다.","瓶"));
+                        blanks.add(new Blank("这瓶香水 受到 很多人的 (__)。","zhè píng xiāngshuǐ shòudào hěnduō rén de huān yíng 。","이 향수는 많은 사람들에게 인기가 있습니다.","欢迎"));
+                        blanks.add(new Blank("这瓶香水 (__) 很多人的 欢迎。","zhè píng xiāngshuǐ shòudào hěnduō rén de huān yíng 。","이 향수는 많은 사람들에게 인기가 있습니다.","受到"));
                         break;
                 }
                 break;
             case Constants.STAGE_10:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("(__) 多少 钱？","Rénmínbì duōshǎo qián?","인민폐로 얼마입니까?","人民币"));
+                        blanks.add(new Blank("这 是 100 (__) 人民币。","Zhè shì yìbǎi kuài rénmínbì.","이것은 인민폐 100위안입니다.","块"));
+                        blanks.add(new Blank("人民币 (__) 钱？","Rénmínbì duōshǎo qián?","인민폐로 얼마입니까?","多少"));
+                        blanks.add(new Blank("这 是 100 块 (__)。","Zhè shì yìbǎi kuài rénmínbì.","이것은 인민폐 100위안입니다.","人民币"));
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("今天 的 (__) 是 多少？","Jīntiān de huìlǜ shì duōshǎo?","오늘 환율이 얼마입니까?","汇率"));
+                        blanks.add(new Blank("1 美元 (__) 1200 韩币。","Yì měiyuán děngyú yìqiānèrbǎi hánbì.","1달러는 한화로 1200원입니다.","等于"));
+                        blanks.add(new Blank("今天 的 汇率 是 (__)？","Jīntiān de huìlǜ shì duōshǎo?","오늘 환율이 얼마입니까?","多少"));
+                        blanks.add(new Blank("1 (__) 等于 1200 韩币。","Yì měiyuán děngyú yìqiānèrbǎi hánbì.","1달러는 한화로 1200원입니다.","美元"));
                         break;
                 }
                 break;
             case Constants.STAGE_11:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("想 怎么 (__) 呢？","Xiǎng zěnme jiésuàn ne?","어떻게 계산하시겠습니까?","结算"));
+                        blanks.add(new Blank("我 想 (__) 人民币 结算。","Wǒ xiǎng yòng rénmínbì jiésuàn.","인민폐로 계산하겠습니다.","用"));
+                        blanks.add(new Blank("想 (__) 结算 呢？","Xiǎng zěnme jiésuàn ne?","어떻게 계산하시겠습니까?","怎么"));
+                        blanks.add(new Blank("我 想 用 人民币 (__)。","Wǒ xiǎng yòng rénmínbì jiésuàn.","인민폐로 계산하겠습니다.","结算"));
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("我 想 用 (__) 结算。","Wǒ xiǎng yòng xìnyòngkǎ jiésuàn.","저는 신용카드로 계산하려고 합니다.","信用卡"));
+                        blanks.add(new Blank("我 想 (__) 信用卡 结算。","Wǒ xiǎng yòng xìnyòngkǎ jiésuàn.","저는 신용카드로 계산하려고 합니다.","用"));
+                        blanks.add(new Blank("我 想 用 (__) 结算。","Wǒ xiǎng yòng hán bì jiésuàn.","저는 원화로 계산하려고 합니다.","韩币"));
+                        blanks.add(new Blank("我 想 用 (__) 结算。","Wǒ xiǎng yòng xiàn jīn jiésuàn.","저는 현금으로 계산하려고 합니다.","金现"));
                         break;
                 }
                 break;
             case Constants.STAGE_12:
                 switch (part) {
                     case Constants.PART_1:
+                        blanks.add(new Blank("请 给我 您的 (__) 和 信用卡。","Qǐng gěi wǒ nín de hùzhào hé xìnyòngkǎ 。","여권과 카드를 주시겠습니까?","护照"));
+                        blanks.add(new Blank("请 在 (__) 签名。","Qǐng zài zhèlǐ qiānmíng.","이곳에 서명해 주십시오.","这里"));
+                        blanks.add(new Blank("请 给我 您的 护照 (__) 信用卡。","Qǐng gěi wǒ nín de hùzhào hé xìnyòngkǎ 。","여권과 카드를 주시겠습니까?","和"));
+                        blanks.add(new Blank("请 在 这里 (__)。","Qǐng zài zhèlǐ qiānmíng.","이곳에 서명해 주십시오.","签名"));
                         break;
                     case Constants.PART_2:
+                        blanks.add(new Blank("这 是 (__) 20块 人民币。","Zhè shì língqián èrshí kuài rén mín bì 。","이것은 잔돈 20위안입니다.","零钱"));
+                        blanks.add(new Blank("请 您 (__) 一下。","Qǐng nín quèrèn yíxià.","확인해 주십시오.","确认"));
+                        blanks.add(new Blank("这 是 零钱 20(__) 人民币。","Zhè shì língqián èrshí kuài rén mín bì 。","이것은 잔돈 20위안입니다.","块"));
+                        blanks.add(new Blank("这 是 零钱 20块 (__)。","Zhè shì língqián èrshí kuài rén mín bì 。","이것은 잔돈 20위안입니다.","人民币"));
                         break;
                 }
                 break;
